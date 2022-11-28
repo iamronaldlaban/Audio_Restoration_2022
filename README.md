@@ -8,6 +8,12 @@ This assignment builds on Assignment I. We assume that we have successfully dete
 ---
 
 ## Installation and Execution
+matplotlib==3.4.3
+numpy==1.20.3
+playsound==1.2.2
+scikit_learn==1.1.3
+scipy==1.7.1
+tqdm==4.62.3
 
 Provide details on the Python version and libraries (e.g. numpy version) you are using. One easy way to do it is to do that automatically:
 ```sh                                 
@@ -25,7 +31,8 @@ python demo_audio_restoration.py
 ---
 
 ## Methodology and Results
-Describe here how you have designed your code, e.g. a main script/routine that calls different functions, is the unittesting included in the main routine? 
+**Methodology**
+
 
 
 

@@ -45,6 +45,7 @@ else:
 
 data_new = data
 length = data_new.shape[0] / samplerate
+
 for i in range(P):
     A = int((win_len - 1) / 2)
     inputVar = data_new[points[i] - A : points[i] + A + 1]
