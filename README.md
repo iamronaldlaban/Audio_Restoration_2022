@@ -1,7 +1,7 @@
 # Audio Restoration using Median Filer and Cubic Spline Filter
 
 ## High-level Description of the project
-This assignment builds on Assignment I. We assume that we have successfully detected the clicks and we are applying different interpolation methods to restore the audio, such as
+This assignment builds on [Assignment I](https://github.com/iamronaldlaban/Audio-Restortation-using-AR-models-in-MATLAB) . We assume that we have successfully detected the clicks and we are applying different interpolation methods to restore the audio, such as
 - median filtering
 - cubic splines
 
@@ -36,7 +36,7 @@ python test_Cubic_Spline.py
 ## Methodology and Results
 **Methodology**
 
-###Median Filter###
+**Median Filter**
   1.  Read the original signal and the degraded signal using `wavfile.read`
   2.  To know the position of the clicks, load the **.mat** file using `loadmat`
   3.  As reading a **.mat** file creates a dictioary, we need to extract the keys and using the correct keys extractt the degraded points.
@@ -56,7 +56,7 @@ python test_Cubic_Spline.py
   9.  A unittest function was added to check the proper functioning of the user defined median filter with the in-built median filter `scipy.signal.medfilt'.
   10.  The results are plotted as seen in Figure 1.
      
-###Cubic Spline Filter###
+**Cubic Spline Filter**
 
 1.  Step 1. to 4. is similar to median filter.
 2.  Call the function `CubicSplineInterpolator` to obtain the restored signal free of clicks.
