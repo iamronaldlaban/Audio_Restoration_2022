@@ -74,7 +74,7 @@ python test_Cubic_Spline.py
     6. A progress bar was added to check the progress of the median filter evaluation. Also the execution time was measured.
 3.  The restored signal is write as `.wav` file using the command `wavfile.write`. 
 4.  The mean squared error between original signal and restored signal was evaluated.
-5.  The results are plotted as seen in Figure 2.
+5.  The results are plotted as seen in Figure 4.
 
 
 **Results**
@@ -103,6 +103,8 @@ After listening to the two restored files, we notice there are some clicks in th
 ## Credits
 
 This code was developed for purely academic purposes by Ronald Melwin Laban (iamronaldlaban) as part of the module Computation Method. 
+
+Module Supervisor : Dr. Angeliki Katsenou
 
 
 
