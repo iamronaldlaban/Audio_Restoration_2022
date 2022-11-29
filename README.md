@@ -48,13 +48,24 @@ python demo_audio_restoration.py
       6. The new matrix is the same size as the window length. Replace the old data point with the content of the new matrix. The content of the new matrix are filtered output wherein the click (*high amplitude postive/negative*) value is repaced by its neighboring value.
       7. Repeat step i. to vi. for all the click values.
       8. A progress bar was added to check the progress of the median filter evaluation. Also the execution time was measured.
-  7.  The output signal at the end of median filter is restored signal free from clicks.
-  8.  The restored signal is write as `.wav` file using the command `wavfile.write`.
-  9.  The mean squared error between original signal and restored signal was evaluated.
-  10.  A unittest function was added to check the proper functioning of the user defined median filter with the in-built median filter `scipy.signal.medfilt'.
-  11.  The results are plotted as seen in Figure 1.
+  7.  The restored signal is write as `.wav` file using the command `wavfile.write`.
+  8.  The mean squared error between original signal and restored signal was evaluated.
+  9.  A unittest function was added to check the proper functioning of the user defined median filter with the in-built median filter `scipy.signal.medfilt'.
+  10.  The results are plotted as seen in Figure 1.
      
+###Cubic Spline Filter###
 
+1.  Step 1. to 4. is similar to median filter.
+2.  Call the function `CubicSplineInterpolator` to obtain the restored signal free of clicks.
+    1.  Create an array of all the index values depending on the length of the degraded signal.
+    2.  Filter the click indexes, and obtain a new filtered index array.
+    3.  Using click indexes, filter out the clicks and obtain a new filtered data array.
+    4.  The filtered index and filtered data is given as input to in-built function `CubicSpline`. A new function is obtained at the output *cs* .
+    5.  Click indexes are passed through *cs* and the new value for these index point is calculated and replaced in the degraded signal. Thus obtaining the restores signal.
+    6. A progress bar was added to check the progress of the median filter evaluation. Also the execution time was measured.
+3.  The restored signal is write as `.wav` file using the command `wavfile.write`. 
+4.  The mean squared error between original signal and restored signal was evaluated.
+5.  The results are plotted as seen in Figure 2.
 
 
 **Results**
