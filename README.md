@@ -1,5 +1,11 @@
 # Audio Restoration using Median Filer and Cubic Spline Filter
 
+## Table of Contents
+1. [High-level Description of the project](#my-first-title)
+2. [Installation and Execution](#my-second-title)
+3. [Methodology and Results](#my-third-title)
+4. [Credits](#my-fourth-title)
+
 ## High-level Description of the project
 This assignment builds on [Assignment I](https://github.com/iamronaldlaban/Audio-Restortation-using-AR-models-in-MATLAB) . We assume that we have successfully detected the clicks and we are applying different interpolation methods to restore the audio, such as
 - median filtering
@@ -90,6 +96,7 @@ The execution time showed as linear growth as the window length was increased, a
 3. Comparing median filter to cubic spline filter, median filter for window length = 3 has **MSE = 0.210** and **execution time = 5.22 seconds**. Whereas cubic spline filter has **MSE = 0.372** and the **execution time = 11.23 seconds**.
 
 After listening to the two restored files, we notice there are some clicks in the `restored_median.wav` were audible as compared to `restored_cubic.wav`. Secondly the output of the cubic spline filter sounds better in comparison to output of median filter.
+
 
 
 ---
