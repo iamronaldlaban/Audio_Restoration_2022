@@ -32,7 +32,8 @@ python demo_audio_restoration.py
 
 ## Methodology and Results
 **Methodology**
-
+1.  Median Filter
+  1.  Read the original signal and the degraded signal using 'wavfile.read' 
 
 
 
