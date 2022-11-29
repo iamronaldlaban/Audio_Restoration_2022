@@ -39,7 +39,7 @@ A.  Median Filter
   4.  From degraded points using `np.where` extract the indexes of the clicks.
   5.  Enter the Window Length for the median filter from the user. *Note: The window size must be ODD, for even window length the program will stop execution
   6.  Call the function(*user-defined*) `median_filter` to obtain the restored signal
-     i.  Depending on the click position, pass window length number of parameters around the click, inculding the click.
+      1.  Depending on the click position, pass window length number of parameters around the click, inculding the click.
       ii. Depending on the window lenght, *window length - 1 / 2* number of zeros are padded on both sides of the data.
      iii.  A window is passed over the data from the starting point and shifted to the right with a increment of one, until the boundary of thr window covers the last data point.
       iv. As the window is passing, the data points in the window are sorted in acensending order and the median value is selected from that data set and stored in a new matrix.
