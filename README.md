@@ -8,25 +8,28 @@ This assignment builds on Assignment I. We assume that we have successfully dete
 ---
 
 ## Installation and Execution
-- matplotlib==3.4.3
-- numpy==1.20.3
-- playsound==1.2.2
-- scikit_learn==1.1.3
-- scipy==1.7.1
-- tqdm==4.62.3
+- Before executing the *.py* file the following library dependencies need to be installed. These can be also viewed in **requirements.txt** files.  
 
-Provide details on the Python version and libraries (e.g. numpy version) you are using. One easy way to do it is to do that automatically:
-```sh                                 
-pip3 install pipreqs
-
-pipreqs $project/path/requirements.txt
+``` sh
+  - matplotlib==3.4.3
+  - numpy==1.20.3
+  - playsound==1.2.2
+  - scikit_learn==1.1.3
+  - scipy==1.7.1
+  - tqdm==4.62.3
 ```
-For more details check [here](https://github.com/bndr/pipreqs)
+- The following files need to be also loaded in the directory for the smooth execution of the code.
 
+``` sh
+  - original.wav
+  - degraded.wav
+  - degraded_points. mat
+```
 
-Afer installing all required packages you can run the demo file simply by typing:
+- Afer installing all required packages you can run the demo file simply by typing:
 ```sh
-python demo_audio_restoration.py
+python test_median_Filter.py
+python test_Cubic_Spline.py
 ```
 ---
 
@@ -70,32 +73,31 @@ python demo_audio_restoration.py
 
 **Results**
 
-1. For the median filter, different lengths were explored to test the effectiveness of the restoration. In particular, XXXX were tested and XXX was observed to deliver the lowest MSE, as shown in the figure below. in 
+1. For the median filter, for window length = 3, and the original, degraded and restored signals were plotted. It was observed, that median filter was able to remove most of the clicks from the degraded signals.   
+<img src="Median_Filter_Graphs.png" width="950" height="500">
 
-<img src="MedianFilter_MSEvsLength.png" width="350">
+For the median filter, mean square error was plotted from window length from 1 to 50 (odd values only) as well as execution time for the same. The MSE has an oscillating behaviour as the window length was increased, as seen in figure below. Minimum MSE were observed for window length 3, 39 and 43. 
+<img src="MSE_vs_Window_Length.png" width="400" height="400">
 
-The restored waveform <output_medianFilter.wav> with the optimal filter length is given below:
+The execution time showed as linear growth as the window length was increased, as seen in figure below.
 
+<img src="Execution_Time_vs_Window_Length.png" width="400" height="400">
 
+2. For the cubic spline filter, most of the clicks were removed as seen in the figure below. The MSE obtained is around 0.372 and the execution time is 11.23 seconds. 
 
-2. Using the cubic splines, we observe ....
+<img src="Cubic_Spline_Filter.png" width="950" height="500">
 
-The restored waveform <output_cubicSplines.wav> with the optimal filter length is given below:
+3. Comparing median filter to cubic spline filter, median filter for window length = 3 has **MSE = 0.210** and **execution time = 5.22 seconds**. Whereas cubic spline filter has **MSE = 0.372** and the **execution time = 11.23 seconds**.
 
-
-3. Comparing the two different interpolation methods, we notice that method X achieves a lower MSE. The runtime of XX method is .....
-
-After listening to the two restored files, we notice ...
+After listening to the two restored files, we notice there are some clicks in the `restored_median.wav` were audible as compared to `restored_cubic.wav`. Secondly the output of the cubic spline filter sounds better in comparison to output of median filter.
 
 
 ---
 ## Credits
 
-This code was developed for purely academic purposes by XXXX (add github profile name) as part of the module ..... 
+This code was developed for purely academic purposes by Ronald Melwin Laban (iamronaldlaban) as part of the module Computation Method. 
 
-Resources:
-- XXXX
-- XXX
+
 
 
 
