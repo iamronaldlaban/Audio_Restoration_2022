@@ -40,13 +40,13 @@ A.  Median Filter
   5.  Enter the Window Length for the median filter from the user. *Note: The window size must be ODD, for even window length the program will stop execution
   6.  Call the function(*user-defined*) `median_filter` to obtain the restored signal
       1.  Depending on the click position, pass window length number of parameters around the click, inculding the click.
-      ii. Depending on the window lenght, *window length - 1 / 2* number of zeros are padded on both sides of the data.
-     iii.  A window is passed over the data from the starting point and shifted to the right with a increment of one, until the boundary of thr window covers the last data point.
-      iv. As the window is passing, the data points in the window are sorted in acensending order and the median value is selected from that data set and stored in a new matrix.
-      v.  Shift the window by one point and repeat the above step until the boundary includes the last point.
-     vi. The new matrix is the same size as the window length. Replace the old data point with the content of the new matrix. The content of the new matrix are filtered output wherein the click (*high amplitude postive/negative*) value is repaced by its neighboring value.
-      vii. Repeat step i. to vi. for all the click values.
-      viii. A progress bar was added to check the progress of the median filter evaluation. Also the execution time was measured.
+      2.  Depending on the window lenght, *window length - 1 / 2* number of zeros are padded on both sides of the data.
+      3.  A window is passed over the data from the starting point and shifted to the right with a increment of one, until the boundary of thr window covers the last data point.
+      4. As the window is passing, the data points in the window are sorted in acensending order and the median value is selected from that data set and stored in a new matrix.
+      5.  Shift the window by one point and repeat the above step until the boundary includes the last point.
+      6. The new matrix is the same size as the window length. Replace the old data point with the content of the new matrix. The content of the new matrix are filtered output wherein the click (*high amplitude postive/negative*) value is repaced by its neighboring value.
+      7. Repeat step i. to vi. for all the click values.
+      8. A progress bar was added to check the progress of the median filter evaluation. Also the execution time was measured.
   7.  The output signal at the end of median filter is restored signal free from clicks.
   8.  The restored signal is write as `.wav` file using the command `wavfile.write`.
   9.  The mean squared error between original signal and restored signal was evaluated.
