@@ -6,18 +6,20 @@ import matplotlib.pyplot as plt
 from scipy.io import loadmat
 from sklearn.metrics import mean_squared_error
 from datetime import datetime
+import time
 from time import sleep
 from tqdm import tqdm
 import scipy.signal
 import unittest
 from playsound import playsound
-from scipy.interpolate import CubicSpline
+
+import sys
 
 
 # Import the ORGINAL wave file
 samplerate_org, data_org = wavfile.read('original.wav')
 
-#Plotting the original signal
+# Plotting the original signal
 length_org = data_org.shape[0] / samplerate_org
 time_org = np.linspace(0., length_org, data_org.shape[0])
 plt.subplot(3, 1, 1)
@@ -31,7 +33,7 @@ plt.ylabel("Amplitude")
 # Import the DEGRADED wave file
 samplerate_deg, data_deg = wavfile.read('degraded.wav')
 
-#Plotting the degraded signal
+# Plotting the degraded signal
 length_deg = data_deg.shape[0] / samplerate_deg
 time_deg = np.linspace(0., length_deg, data_deg.shape[0])
 plt.subplot(3, 1, 2)
@@ -69,6 +71,7 @@ if win_len % 2 == 1:
 else:
     print('The window size is EVEN')
     print('CHANGE WINDOW SIZE TO ODD NUMBER')
+    sys.exit()
 
 
 def median_filter(data_deg, click_index, num_clicks, win_len):
@@ -83,7 +86,7 @@ def median_filter(data_deg, click_index, num_clicks, win_len):
         num_clicks[int] : Number of click indexes
 
         win_len[int] : Window Length for the median filter
-    
+
     Returns:
         data_new[array] : Returns a new signal passed through median filter and  mostly free from clicks
 
@@ -115,22 +118,23 @@ def median_filter(data_deg, click_index, num_clicks, win_len):
                  pad_num: click_index[i] + pad_num + 1] = new_mat
     return data_new
 
+
 # Measure the start time
-start_time = datetime.now()
+start_time = time.time()
 
 # Adding progress bar
 for i in tqdm(range(100)):
     restored_data = median_filter(data_deg, click_index, num_clicks, win_len)
-    sleep(0.3)
+    sleep(0.03)
 
 # Measure the end time
-end_time = datetime.now()
-print('Duration: {} seconds'.format(end_time - start_time))
+end_time = time.time()
+print('Execution Time for Median Filter : {} seconds'.format(end_time - start_time))
 
 # Write the restored audio file
 wavfile.write("restored_median.wav", samplerate_org, restored_data)
 
-#Plotting the restored signal
+# Plotting the restored signal
 length = restored_data.shape[0] / samplerate_org
 time_restored = np.linspace(0., length, restored_data.shape[0])
 plt.subplot(3, 1, 3)
@@ -166,14 +170,26 @@ class TestMyCode(unittest.TestCase):
         else:
             print('The user defined median filter IS NOT proper')
 
+    def test_my_mse_finction(self):
+        MSE_inbuilt = mean_squared_error(data_org, restored_data)
+        comparison = MSE == MSE_inbuilt
+        equal_mse = comparison.all()
+        if equal_mse == True:
+            print('The user defined MSE function IS proper')
+        else:
+            print('The user defined MSE function IS NOT proper')
+
+
+        
+
 
 # run the test
 if __name__ == "__main__":
     unittest.main()
 
 ''' Playing the aus=dio signal'''
-#Playing the degraded signal
+# Playing the degraded signal
 playsound('degraded.wav')
 
-#Playing the restored signal
+# Playing the restored signal
 playsound('restored_median.wav')

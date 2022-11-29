@@ -5,7 +5,7 @@ from scipy.io import wavfile
 import matplotlib.pyplot as plt
 from scipy.io import loadmat
 from sklearn.metrics import mean_squared_error
-from datetime import datetime
+import time
 from time import sleep
 from tqdm import tqdm
 import scipy.signal
@@ -78,13 +78,13 @@ def CubicSplineInterpolator(data_deg, click_index):
     # Filtering all indexes except the indexes of the click
     filtered_index = np.delete(index_all, click_index)
     # Using inbuilt CubicSpline function and passing filtered index and data to get a new trained function
-    cs = CubicSpline(filtered_index, filtered_data, bc_type='natural')
+    cs = CubicSpline(filtered_index, filtered_data, bc_type='not-a-knot')
     # Passing the click index through the new trained function
-    new_data[click_index] = cs(click_index)
+    new_data[click_index] = cs(click_index, 2)
     return new_data
 
 # Measure the start time
-start_time = datetime.now()
+start_time = time.time()
 
 # Adding progress bar
 for i in tqdm(range(100)):
@@ -92,8 +92,8 @@ for i in tqdm(range(100)):
     sleep(0.005)
 
 # Measure the end time
-end_time = datetime.now()
-print('Duration: {} seconds'.format(end_time - start_time))
+end_time = time.time()
+print('Execution Time for Cubic Spline Interpolator : {} seconds'.format(end_time - start_time))
 
 # Write the restored audio file
 wavfile.write("restored_cubic.wav", samplerate_org, restored_data)
@@ -109,9 +109,13 @@ plt.xlabel("Time [s]")
 plt.ylabel("Amplitude")
 plt.show()
 
-MSE = mean_squared_error(data_org, restored_data)
-print(MSE)
+# MSE = mean_squared_error(data_org, restored_data)
+MSE = np.square(data_org - restored_data).mean()
+print('The Mean Squared Error for Cubic Spline Interpilator :', MSE)
 
-# playsound('degraded.wav')
+''' Playing the aus=dio signal'''
+# Playing the degraded signal
+#playsound('degraded.wav')
 
-playsound('restored_cubic.wav')
+# Playing the restored signal
+playsound('restored_median.wav')
