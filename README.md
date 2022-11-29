@@ -32,7 +32,7 @@ python demo_audio_restoration.py
 
 ## Methodology and Results
 **Methodology**
-***Median Filter
+###Median Filter
   1.  Read the original signal and the degraded signal using `wavfile.read`
   2.  To know the position of the clicks, load the **.mat** file using `loadmat`
   3.  As reading a **.mat** file creates a dictioary, we need to extract the keys and using the correct keys extractt the degraded points.
