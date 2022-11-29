@@ -70,7 +70,7 @@ python demo_audio_restoration.py
 
 **Results**
 
-1. For the median filter, different lengths were explored to test the effectiveness of the restoration. In particular, XXXX were tested and XXX was observed to deliver the lowest MSE, as shown in the figure below.
+1. For the median filter, different lengths were explored to test the effectiveness of the restoration. In particular, XXXX were tested and XXX was observed to deliver the lowest MSE, as shown in the figure below. in 
 
 <img src="MedianFilter_MSEvsLength.png" width="350">
 
